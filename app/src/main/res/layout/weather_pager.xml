@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+
+    <TextView
+        android:id="@+id/tmp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:elevation="10dp"
+        android:text="15°"
+        android:textColor="@android:color/background_dark"
+        android:textSize="150sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.132" />
+
+    <TextView
+        android:id="@+id/cond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="晴"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tmp" />
+
+    <TextView
+        android:id="@+id/qlty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="104dp"
+        android:text="优"
+        android:textColor="@android:color/holo_green_light"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tmp" />
+
+    <TextView
+        android:id="@+id/date2"
+        android:layout_width="77dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="02"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/temp2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/date1"
+        android:layout_width="77dp"
+        android:layout_height="wrap_content"
+        android:text="01"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/date2"
+        app:layout_constraintEnd_toStartOf="@+id/date2"
+        app:layout_constraintTop_toTopOf="@+id/date2" />
+
+    <TextView
+        android:id="@+id/date0"
+        android:layout_width="76dp"
+        android:layout_height="wrap_content"
+        android:text="00"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/date1"
+        app:layout_constraintEnd_toStartOf="@+id/date1"
+        app:layout_constraintTop_toTopOf="@+id/date1" />
+
+    <TextView
+        android:id="@+id/date3"
+        android:layout_width="77dp"
+        android:layout_height="wrap_content"
+        android:text="03"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/date2"
+        app:layout_constraintStart_toEndOf="@+id/date2"
+        app:layout_constraintTop_toTopOf="@+id/date2" />
+
+    <TextView
+        android:id="@+id/date4"
+        android:layout_width="76dp"
+        android:layout_height="wrap_content"
+        android:text="04"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/date3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/date3"
+        app:layout_constraintTop_toTopOf="@+id/date3" />
+
+    <TextView
+        android:id="@+id/temp0"
+        android:layout_width="74dp"
+        android:layout_height="wrap_content"
+        android:text="20°"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/temp1"
+        app:layout_constraintEnd_toStartOf="@+id/temp1"
+        app:layout_constraintTop_toTopOf="@+id/temp1" />
+
+    <TextView
+        android:id="@+id/temp1"
+        android:layout_width="77dp"
+        android:layout_height="wrap_content"
+        android:text="18°"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/temp2"
+        app:layout_constraintEnd_toStartOf="@+id/temp2"
+        app:layout_constraintTop_toTopOf="@+id/temp2" />
+
+    <TextView
+        android:id="@+id/temp2"
+        android:layout_width="77dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="22°"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/wea2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/temp3"
+        android:layout_width="77dp"
+        android:layout_height="wrap_content"
+        android:text="15°"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/temp2"
+        app:layout_constraintStart_toEndOf="@+id/temp2"
+        app:layout_constraintTop_toTopOf="@+id/temp2" />
+
+    <TextView
+        android:id="@+id/temp4"
+        android:layout_width="77dp"
+        android:layout_height="wrap_content"
+        android:text="20°"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/temp3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/temp3"
+        app:layout_constraintTop_toTopOf="@+id/temp3" />
+
+    <TextView
+        android:id="@+id/wea0"
+        android:layout_width="76dp"
+        android:layout_height="wrap_content"
+        android:text="晴"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/wea1"
+        app:layout_constraintEnd_toStartOf="@+id/wea1" />
+
+    <TextView
+        android:id="@+id/wea1"
+        android:layout_width="77dp"
+        android:layout_height="wrap_content"
+        android:text="多云"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/wea2"
+        app:layout_constraintEnd_toStartOf="@+id/wea2"
+        app:layout_constraintTop_toTopOf="@+id/wea2" />
+
+    <TextView
+        android:id="@+id/wea2"
+        android:layout_width="77dp"
+        android:layout_height="18dp"
+        android:text="雨"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/qlty"
+        app:layout_constraintVertical_bias="0.824" />
+
+    <TextView
+        android:id="@+id/wea3"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:text="多云"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/wea2"
+        app:layout_constraintStart_toEndOf="@+id/wea2"
+        app:layout_constraintTop_toTopOf="@+id/wea2" />
+
+    <TextView
+        android:id="@+id/wea4"
+        android:layout_width="77dp"
+        android:layout_height="wrap_content"
+        android:text="阴"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/wea3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/wea3"
+        app:layout_constraintTop_toTopOf="@+id/wea3" />
+
+
+</android.support.constraint.ConstraintLayout>
