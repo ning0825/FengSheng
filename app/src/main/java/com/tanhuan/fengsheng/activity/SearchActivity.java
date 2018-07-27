@@ -134,7 +134,7 @@ public class SearchActivity extends AppCompatActivity {
                 startActivity(intent);
                 Intent bcrIntent = new Intent("CITY_CHANGE");
                 sendBroadcast(bcrIntent);
-                Toast.makeText(SearchActivity.this, "添加" + cityName + "成功", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SearchActivity.this, "add_city" + cityName + "成功", Toast.LENGTH_SHORT).show();
             }
         });
 
