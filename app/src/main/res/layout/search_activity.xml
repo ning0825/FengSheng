@@ -20,6 +20,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="@string/add_city"
+        android:layout_marginBottom="8dp"
         android:textColor="@android:color/background_dark"
         android:textSize="30sp" />
 
@@ -28,8 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_margin="8dp"
-        android:background="@drawable/search"
-        android:theme="@style/AppTheme"/>
+        android:background="@drawable/search"/>
 
     <ListView
         android:id="@+id/lv_added"

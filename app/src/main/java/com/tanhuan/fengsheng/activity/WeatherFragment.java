@@ -1,29 +1,27 @@
 package com.tanhuan.fengsheng.activity;
 
-import android.annotation.SuppressLint;
+import android.app.ActivityOptions;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.transition.Transition;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tanhuan.fengsheng.R;
-import com.tanhuan.fengsheng.entity.AirNow;
-import com.tanhuan.fengsheng.entity.NowWeather;
-import com.tanhuan.fengsheng.entity.WeatherForecast;
 import com.tanhuan.fengsheng.entity.WeatherMain;
-import com.tanhuan.fengsheng.util.HttpUtil;
-import com.tanhuan.fengsheng.util.OtherUtil;
+import com.tanhuan.fengsheng.entity.WeatherOther;
 
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -38,110 +36,52 @@ public class WeatherFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable final Bundle savedInstanceState) {
-        final String cityName = getArguments().getString("cityName");
+
         final View rootView = inflater.inflate(R.layout.weather_pager, container, false);
 
-         final Handler mHandler = new Handler(){
+        WeatherMain weatherMain = (WeatherMain)getArguments().getSerializable("weather_main");
+        final ViewHolder viewHolder = new ViewHolder(rootView);
+        viewHolder.tmp.setText(weatherMain.getTmp());
+        viewHolder.cond.setText(weatherMain.getCond());
+        viewHolder.aq.setText(weatherMain.getAirQlty());
+        viewHolder.date1.setText(weatherMain.getDate1());
+        viewHolder.date2.setText(weatherMain.getDate2());
+        viewHolder.date3.setText(weatherMain.getDate3());
+        viewHolder.date4.setText(weatherMain.getDate4());
+        viewHolder.date5.setText(weatherMain.getDate5());
+        viewHolder.tmp1.setText(weatherMain.getTmp1() + "°");
+        viewHolder.tmp2.setText(weatherMain.getTmp2()+ "°");
+        viewHolder.tmp3.setText(weatherMain.getTmp3() + "°");
+        viewHolder.tmp4.setText(weatherMain.getTmp4() + "°");
+        viewHolder.tmp5.setText(weatherMain.getTmp5() + "°");
+        viewHolder.cond1.setText(weatherMain.getCond1() + "°");
+        viewHolder.cond2.setText(weatherMain.getCond2());
+        viewHolder.cond3.setText(weatherMain.getCond3());
+        viewHolder.cond4.setText(weatherMain.getCond4());
+        viewHolder.cond5.setText(weatherMain.getCond5());
+
+        final WeatherOther weatherOther = new WeatherOther();
+        weatherOther.setCityName(weatherMain.getCityName());
+        weatherOther.setTmp(weatherMain.getTmp());
+        weatherOther.setHasDate(weatherMain.isHasDate());
+        weatherOther.setWindDir(weatherMain.getWindDir());
+        weatherOther.setWindSc(weatherMain.getWindSc());
+        weatherOther.setWindSpd(weatherMain.getWindSpd());
+        weatherOther.setAqi(weatherMain.getAqi());
+        weatherOther.setPm10(weatherMain.getPm10());
+        weatherOther.setPm25(weatherMain.getPm25());
+        weatherOther.setLifestyleBeans(weatherMain.getLifestyleBeans());
+
+        viewHolder.tmp.setClickable(true);
+        viewHolder.tmp.setOnClickListener(new View.OnClickListener() {
+
             @Override
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-                WeatherMain weatherMain = (WeatherMain)msg.obj;
-                ViewHolder viewHolder = new ViewHolder(rootView);
-                viewHolder.tmp.setText(weatherMain.getTmp());
-                viewHolder.cond.setText(weatherMain.getCond());
-                viewHolder.aq.setText(weatherMain.getAirQlty());
-                viewHolder.date1.setText(weatherMain.getDate1());
-                viewHolder.date2.setText(weatherMain.getDate2());
-                viewHolder.date3.setText(weatherMain.getDate3());
-                viewHolder.date4.setText(weatherMain.getDate4());
-                viewHolder.date5.setText(weatherMain.getDate5());
-                viewHolder.tmp1.setText(weatherMain.getTmp1());
-                viewHolder.tmp2.setText(weatherMain.getTmp2());
-                viewHolder.tmp3.setText(weatherMain.getTmp3());
-                viewHolder.tmp4.setText(weatherMain.getTmp4());
-                viewHolder.tmp5.setText(weatherMain.getTmp5());
-                viewHolder.cond1.setText(weatherMain.getCond1());
-                viewHolder.cond2.setText(weatherMain.getCond2());
-                viewHolder.cond3.setText(weatherMain.getCond3());
-                viewHolder.cond4.setText(weatherMain.getCond4());
-                viewHolder.cond5.setText(weatherMain.getCond5());
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), WeatherOtherActivity.class);
+                intent.putExtra("weather_other", weatherOther);
+                startActivity(intent);
             }
-        };
-        new Thread() {
-            @Override
-            public void run() {
-
-                try {
-                    NowWeather.HeWeather6Bean.NowBean nowWeather = HttpUtil.getNow(cityName);
-                    String tmp = nowWeather.getTmp();
-                    String cond = nowWeather.getCond_txt();
-
-                    AirNow.HeWeather6Bean.AirNowCityBean airNowCityBean = HttpUtil.getAirNow(cityName);
-                    String airQlty = airNowCityBean != null ? airNowCityBean.getQlty() : "null";
-
-                    List<WeatherForecast.HeWeather6Bean.DailyForecastBean> dailyForecastBeans = HttpUtil.getForecast(cityName);
-                    WeatherForecast.HeWeather6Bean.DailyForecastBean dailyForecastBean1 = dailyForecastBeans.get(0);
-                    String date1 = OtherUtil.toDay(dailyForecastBean1.getDate());
-                    String tmp1 = dailyForecastBean1.getTmp_max();
-                    String cond1 = dailyForecastBean1.getCond_txt_d();
-
-                    WeatherForecast.HeWeather6Bean.DailyForecastBean dailyForecastBean2 = dailyForecastBeans.get(1);
-                    String date2 = OtherUtil.toDay(dailyForecastBean2.getDate());
-                    String tmp2 = dailyForecastBean2.getTmp_max();
-                    String cond2 = dailyForecastBean2.getCond_txt_d();
-
-                    WeatherForecast.HeWeather6Bean.DailyForecastBean dailyForecastBean3 = dailyForecastBeans.get(2);
-                    String date3 = OtherUtil.toDay(dailyForecastBean3.getDate());
-                    String tmp3 = dailyForecastBean3.getTmp_max();
-                    String cond3 = dailyForecastBean3.getCond_txt_d();
-
-                    WeatherForecast.HeWeather6Bean.DailyForecastBean dailyForecastBean4 = dailyForecastBeans.get(3);
-                    String date4 = OtherUtil.toDay(dailyForecastBean4.getDate());
-                    String tmp4 = dailyForecastBean4.getTmp_max();
-                    String cond4 = dailyForecastBean4.getCond_txt_d();
-
-                    WeatherForecast.HeWeather6Bean.DailyForecastBean dailyForecastBean5 = dailyForecastBeans.get(4);
-                    String date5 = OtherUtil.toDay(dailyForecastBean5.getDate());
-                    String tmp5 = dailyForecastBean5.getTmp_max();
-                    String cond5 = dailyForecastBean5.getCond_txt_d();
-
-                    WeatherMain weatherMain = new WeatherMain();
-                    weatherMain.setCityName(cityName);
-                    weatherMain.setTmp(tmp);
-                    weatherMain.setCond(cond);
-                    weatherMain.setAirQlty(airQlty);
-
-                    weatherMain.setDate1(date1);
-                    weatherMain.setTmp1(tmp1);
-                    weatherMain.setCond1(cond1);
-
-                    weatherMain.setDate2(date2);
-                    weatherMain.setTmp2(tmp2);
-                    weatherMain.setCond2(cond2);
-
-                    weatherMain.setDate3(date3);
-                    weatherMain.setTmp3(tmp3);
-                    weatherMain.setCond3(cond3);
-
-                    weatherMain.setDate4(date4);
-                    weatherMain.setTmp4(tmp4);
-                    weatherMain.setCond4(cond4);
-
-                    weatherMain.setDate5(date5);
-                    weatherMain.setTmp5(tmp5);
-                    weatherMain.setCond5(cond5);
-
-                    Message message = new Message();
-                    message.obj = weatherMain;
-                    mHandler.sendMessage(message);
-
-
-                } catch (IOException e) {
-                    Log.d("dfs", e.getMessage());
-                }
-
-            }
-        }.start();
+        });
 
 
         return rootView;

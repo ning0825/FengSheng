@@ -1,4 +1,4 @@
-package com.tanhuan.fengsheng.entity;
+package com.tanhuan.fengsheng.bean;
 
 import java.util.List;
 

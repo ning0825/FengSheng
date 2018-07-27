@@ -1,16 +1,31 @@
 package com.tanhuan.fengsheng.entity;
 
-public class WeatherMain {
+import com.tanhuan.fengsheng.bean.LifeStyle;
+
+import java.io.Serializable;
+import java.util.List;
+
+public class WeatherMain implements Serializable{
 
     private String cityName;
     private String tmp;
     private String cond;
     private String airQlty;
+    private String udTime;
 
     private String date1;
     private String date2;
     private String date3;
     private String date4;
+
+    public String getUdTime() {
+        return udTime;
+    }
+
+    public void setUdTime(String udTime) {
+        this.udTime = udTime;
+    }
+
     private String date5;
 
     private String tmp1;
@@ -24,6 +39,86 @@ public class WeatherMain {
     private String cond3;
     private String cond4;
     private String cond5;
+
+    //风况
+    private String windDir;
+    private String windSc;
+    private String windSpd;
+
+    //空气质量
+    private String aqi;
+    private String pm10;
+    private String pm25;
+
+    public boolean isHasDate() {
+        return hasDate;
+    }
+
+    public void setHasDate(boolean hasDate) {
+        this.hasDate = hasDate;
+    }
+
+    private boolean hasDate;
+
+    public String getWindDir() {
+        return windDir;
+    }
+
+    public void setWindDir(String windDir) {
+        this.windDir = windDir;
+    }
+
+    public String getWindSc() {
+        return windSc;
+    }
+
+    public void setWindSc(String windSc) {
+        this.windSc = windSc;
+    }
+
+    public String getWindSpd() {
+        return windSpd;
+    }
+
+    public void setWindSpd(String windSpd) {
+        this.windSpd = windSpd;
+    }
+
+    public String getAqi() {
+        return aqi;
+    }
+
+    public void setAqi(String aqi) {
+        this.aqi = aqi;
+    }
+
+    public String getPm10() {
+        return pm10;
+    }
+
+    public void setPm10(String pm10) {
+        this.pm10 = pm10;
+    }
+
+    public String getPm25() {
+        return pm25;
+    }
+
+    public void setPm25(String pm25) {
+        this.pm25 = pm25;
+    }
+
+    public List<LifeStyle.HeWeather6Bean.LifestyleBean> getLifestyleBeans() {
+        return lifestyleBeans;
+    }
+
+    public void setLifestyleBeans(List<LifeStyle.HeWeather6Bean.LifestyleBean> lifestyleBeans) {
+        this.lifestyleBeans = lifestyleBeans;
+    }
+
+
+    //生活指数
+    private List<LifeStyle.HeWeather6Bean.LifestyleBean> lifestyleBeans;
 
     public String getCityName() {
         return cityName;

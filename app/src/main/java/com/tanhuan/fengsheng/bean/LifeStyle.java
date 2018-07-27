@@ -1,8 +1,9 @@
-package com.tanhuan.fengsheng.entity;
+package com.tanhuan.fengsheng.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class LifeStyle {
+public class LifeStyle implements Serializable{
 
     private List<HeWeather6Bean> HeWeather6;
 
@@ -171,7 +172,7 @@ public class LifeStyle {
             }
         }
 
-        public static class LifestyleBean {
+        public static class LifestyleBean implements Serializable{
             /**
              * brf : 舒适
              * txt : 今天夜间不太热也不太冷，风力不大，相信您在这样的天气条件下，应会感到比较清爽和舒适。

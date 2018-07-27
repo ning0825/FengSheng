@@ -47,6 +47,9 @@ public class MyListViewAdapter extends ArrayAdapter {
                 weatherDB.deleteCity(cityName);
                 Toast.makeText(getContext(), "删除" + cityName + "成功", Toast.LENGTH_SHORT).show();
                 remove(getItem(position));
+                Intent bcrIntent = new Intent("CITY_CHANGE");
+                getContext().sendBroadcast(bcrIntent);
+
             }
         });
         textView.setText(name);

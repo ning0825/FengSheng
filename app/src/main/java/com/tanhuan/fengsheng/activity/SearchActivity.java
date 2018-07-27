@@ -12,14 +12,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.tanhuan.fengsheng.MainActivity;
 import com.tanhuan.fengsheng.R;
 import com.tanhuan.fengsheng.adapter.MyListViewAdapter;
 import com.tanhuan.fengsheng.db.WeatherDB;
-import com.tanhuan.fengsheng.entity.Find;
+import com.tanhuan.fengsheng.bean.Find;
 import com.tanhuan.fengsheng.util.HttpUtil;
 
 import java.io.IOException;
@@ -133,6 +132,8 @@ public class SearchActivity extends AppCompatActivity {
                 weatherDB.saveCity(cityName);
                 Intent intent = new Intent(SearchActivity.this, MainActivity.class);
                 startActivity(intent);
+                Intent bcrIntent = new Intent("CITY_CHANGE");
+                sendBroadcast(bcrIntent);
                 Toast.makeText(SearchActivity.this, "添加" + cityName + "成功", Toast.LENGTH_SHORT).show();
             }
         });
