@@ -54,7 +54,7 @@ public class WeatherFragment extends Fragment {
         viewHolder.tmp3.setText(weatherMain.getTmp3() + "°");
         viewHolder.tmp4.setText(weatherMain.getTmp4() + "°");
         viewHolder.tmp5.setText(weatherMain.getTmp5() + "°");
-        viewHolder.cond1.setText(weatherMain.getCond1() + "°");
+        viewHolder.cond1.setText(weatherMain.getCond1());
         viewHolder.cond2.setText(weatherMain.getCond2());
         viewHolder.cond3.setText(weatherMain.getCond3());
         viewHolder.cond4.setText(weatherMain.getCond4());

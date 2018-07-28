@@ -39,19 +39,19 @@ public class MyViewPager extends ViewPager {
             case MotionEvent.ACTION_DOWN:
                 startY = MotionEvent.obtain(ev).getY();
                 startX = MotionEvent.obtain(ev).getX();
-                Log.e("vp-------Oldy", String.valueOf(ev.getRawY()));
+//                Log.e("vp-------Oldy", String.valueOf(ev.getRawY()));
 //                break;
 
             case MotionEvent.ACTION_MOVE:
                 endY = ev.getY();
                 endX = ev.getX();
-                Log.e("vp------newy", String.valueOf(endY));
+//                Log.e("vp------newy", String.valueOf(endY));
 
                 float diffX = Math.abs(endX - startX);
                 float diffY = Math.abs(endY - startY);
 
                 if (diffY > touchSlop && diffX < diffY) {
-                    Log.e("vp---------", "up gesture " );
+//                    Log.e("vp---------", "up gesture " );
                     return false;
                 }
 

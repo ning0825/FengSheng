@@ -1,9 +1,11 @@
 package com.tanhuan.fengsheng.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +42,7 @@ public class MyListViewAdapter extends ArrayAdapter {
         TextView textView = view.findViewById(R.id.tv_city_name);
         ImageButton imageButton = view.findViewById(R.id.ib_del_city);
         String name = cityArray.get(position);
+        textView.setText(name);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,10 +52,13 @@ public class MyListViewAdapter extends ArrayAdapter {
                 remove(getItem(position));
                 Intent bcrIntent = new Intent("CITY_CHANGE");
                 getContext().sendBroadcast(bcrIntent);
+                if (getCount() == 0) {
+                    Intent intent = new Intent(getContext(), MainActivity.class);
+                    getContext().startActivity(intent);
+                }
 
             }
         });
-        textView.setText(name);
 
         return view;
     }

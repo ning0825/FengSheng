@@ -30,10 +30,14 @@ import butterknife.ButterKnife;
 
 public class SearchActivity extends AppCompatActivity {
 
-    @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.search_view) SearchView searchView;
-    @BindView(R.id.lv_to_add) ListView listView;
-    @BindView(R.id.lv_added) ListView listViewAdded;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.search_view)
+    SearchView searchView;
+    @BindView(R.id.lv_to_add)
+    ListView listView;
+    @BindView(R.id.lv_added)
+    ListView listViewAdded;
 
     WeatherDB weatherDB;
 
@@ -70,6 +74,7 @@ public class SearchActivity extends AppCompatActivity {
         listViewAdded.setHeaderDividersEnabled(false);
         listViewAdded.setAdapter(new MyListViewAdapter(this, R.layout.item_added_city, cityArray));
 
+
 //        searchView initialize
         searchView.setIconified(false);
 
@@ -80,7 +85,7 @@ public class SearchActivity extends AppCompatActivity {
             }
 
             @Override
-            public boolean onQueryTextChange (final String newText) {
+            public boolean onQueryTextChange(final String newText) {
 
                 if (searchView.getQuery().toString().length() == 0) {
                     listViewAdded.setVisibility(View.VISIBLE);
@@ -123,10 +128,12 @@ public class SearchActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 String cityName = stringArray.get(position);
-                for (String s : cityArray) {
-                    if (s.equals(cityName)) {
-                        Toast.makeText(SearchActivity.this, "城市已存在", Toast.LENGTH_SHORT).show();
-                        return;
+                if (cityArray != null) {
+                    for (String s : cityArray) {
+                        if (s.equals(cityName)) {
+                            Toast.makeText(SearchActivity.this, "恕我直言，有" + cityName + "了已经", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                     }
                 }
                 weatherDB.saveCity(cityName);
@@ -134,7 +141,9 @@ public class SearchActivity extends AppCompatActivity {
                 startActivity(intent);
                 Intent bcrIntent = new Intent("CITY_CHANGE");
                 sendBroadcast(bcrIntent);
-                Toast.makeText(SearchActivity.this, "add_city" + cityName + "成功", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SearchActivity.this, "好，加上" + cityName + "了", Toast.LENGTH_SHORT).show();
+
+
             }
         });
 
