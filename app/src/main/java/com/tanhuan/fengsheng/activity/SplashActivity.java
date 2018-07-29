@@ -1,9 +1,6 @@
 package com.tanhuan.fengsheng.activity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -27,7 +24,6 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
 
         if (OtherUtil.hasNetWork(this)) {
             final List<WeatherMain> weatherMains = new ArrayList<>();
