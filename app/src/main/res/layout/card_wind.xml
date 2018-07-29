@@ -5,13 +5,15 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     app:cardCornerRadius="10dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
     <LinearLayout
         android:id="@+id/ll_wind"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@drawable/bg_card_wind">
 
         <GridLayout
             android:id="@+id/gl_wind"
@@ -20,6 +22,7 @@
             android:columnCount="3">
 
             <TextView
+                android:textColor="@color/white"
                 android:id="@+id/tv_wind_dir"
                 android:textSize="28sp"
                 android:gravity="center"
@@ -33,6 +36,7 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:textColor="@color/white"
                     android:id="@+id/tv_wind_sc"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -42,6 +46,7 @@
                     android:paddingRight="2dp"
                     android:textSize="30sp" />
                 <TextView
+                    android:textColor="@color/white"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -60,6 +65,7 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:textColor="@color/white"
                     android:id="@+id/tv_wind_spd"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -69,6 +75,7 @@
                     android:paddingRight="2dp"
                     android:textSize="30sp" />
                 <TextView
+                    android:textColor="@color/white"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -81,6 +88,7 @@
             </LinearLayout>
 
             <TextView
+                android:textColor="@color/white"
                 android:text="风向"
                 android:layout_row="1"
                 android:layout_column="0"
@@ -88,6 +96,7 @@
                 android:paddingBottom="8dp"
                 android:gravity="center" />
             <TextView
+                android:textColor="@color/white"
                 android:text="风力"
                 android:layout_row="1"
                 android:layout_column="1"
@@ -95,6 +104,7 @@
                 android:gravity="center"
                 android:paddingBottom="8dp"/>
             <TextView
+                android:textColor="@color/white"
                 android:text="风速"
                 android:layout_row="1"
                 android:layout_column="2"

@@ -57,6 +57,10 @@ public class SettingActivity extends AppCompatActivity {
                         Intent intent = new Intent(SettingActivity.this, SearchActivity.class);
                         startActivity(intent);
                         break;
+                    case 1:
+                        Intent intent1 = new Intent(SettingActivity.this, AboutActivity.class);
+                        startActivity(intent1);
+                        break;
                     default:
                         break;
 

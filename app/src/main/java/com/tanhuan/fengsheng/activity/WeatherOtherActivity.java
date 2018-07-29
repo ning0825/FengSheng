@@ -33,6 +33,8 @@ public class WeatherOtherActivity extends AppCompatActivity {
     CardView cvLife;
     @BindView(R.id.tb_other)
     Toolbar toolbar;
+    @BindView(R.id.tv_air)
+    TextView tvAir;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -80,6 +82,7 @@ public class WeatherOtherActivity extends AppCompatActivity {
             viewHolder.tvPm10.setText(weatherOther.getPm10());
         } else {
             viewHolder.cvAir.setVisibility(View.GONE);
+            tvAir.setVisibility(View.GONE);
         }
 
         viewHolder.lvLife.setAdapter(new LifeListViewAdapter(this, R.layout.item_life_style, weatherOther.getLifestyleBeans()));

@@ -145,34 +145,56 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onRefresh() {
 
-                //执行刷新操作
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (OtherUtil.hasNetWork(MainActivity.this)) {
-                            int currentItem = viewPager.getCurrentItem();
-                            Fragment currentFragment = fragments.get(currentItem);
-                            String currentCity = cityName.getText().toString();
-                            final WeatherMain weatherMain = getWM(currentCity);
-                            Bundle bundle = new Bundle();
-                            bundle.putSerializable("weather_main", weatherMain);
-                            currentFragment.setArguments(bundle);
-                            currentFragment.onCreate(bundle);
-
-                            srl.setRefreshing(false);
+                if (fragments.size() == 0) {
+                    new Thread() {
+                        @Override
+                        public void run() {
+                            for (final String cityName : city) {
+                                weatherMains = new ArrayList<>();
+                                weatherMains.add(HttpUtil.getWM(cityName));
+                            }
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast.makeText(MainActivity.this, "刷新成功, 时间：" + weatherMain.getUdTime(), Toast.LENGTH_SHORT).show();
 
+                                    init(weatherMains);
+                                    srl.setRefreshing(false);
                                 }
                             });
-                        } else {
-                            showDialog();
                         }
+                    }.start();
+                } else {
+                    //执行刷新操作
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (OtherUtil.hasNetWork(MainActivity.this)) {
+                                int currentItem = viewPager.getCurrentItem();
+                                Fragment currentFragment = fragments.get(currentItem);
+                                String currentCity = cityName.getText().toString();
+                                final WeatherMain weatherMain = getWM(currentCity);
+                                Bundle bundle = new Bundle();
+                                bundle.putSerializable("weather_main", weatherMain);
+                                currentFragment.setArguments(bundle);
+                                currentFragment.onCreate(bundle);
 
-                    }
-                }).start();
+                                srl.setRefreshing(false);
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(MainActivity.this, "刷新成功, 时间：" + weatherMain.getUdTime(), Toast.LENGTH_SHORT).show();
+
+                                    }
+                                });
+                            } else {
+                                showDialog();
+                            }
+
+                        }
+                    }).start();
+                }
+
+
             }
         });
     }

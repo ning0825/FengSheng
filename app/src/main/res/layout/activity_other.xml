@@ -3,7 +3,6 @@
     android:id="@+id/other_sv"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#F8F9FD"
     android:orientation="vertical">
 
 
@@ -53,6 +52,7 @@
                 layout="@layout/card_wind" />
 
             <TextView
+                android:id="@+id/tv_air"
                 android:text="空气质量"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
