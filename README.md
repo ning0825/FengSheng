@@ -3,4 +3,4 @@
 ![main](https://github.com/ning0825/FengSheng/blob/master/screenshot/main.png?raw=true)
 ![other](https://github.com/ning0825/FengSheng/blob/master/screenshot/other.png?raw=true)
 ![search1](https://github.com/ning0825/FengSheng/blob/master/screenshot/search.png?raw=true)
-![search2](FengSheng/screenshot/search2.png)
+![search2](https://github.com/ning0825/FengSheng/blob/master/screenshot/search2.png?raw=true)
